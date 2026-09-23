@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-using static System.Net.Mime.MediaTypeNames;
-
+﻿
 class Monster
 {
     private string monstername;

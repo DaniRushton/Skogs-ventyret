@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 bin/
 obj/
+=======
+bin/
+obj/
+>>>>>>> 1083ccc (fixat gitignore)
 .vs/
