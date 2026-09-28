@@ -1,12 +1,6 @@
 ﻿
 class Monster
 {
-    private string monstername;
-    private int hp;
-    private int attack;
-    private int xp;
-    private int defense;
-
     public string MonsterName { get; private set; }
     public int Hp { get; private set; }
     public int Attack { get; private set; }
@@ -15,27 +9,27 @@ class Monster
 
     public Monster(string monsterName, int monsterHp, int monsterAttack, int monsterXp, int monsterDefense)
     {
-        monstername = monsterName;
-        hp = monsterHp;
-        attack = monsterAttack;
-        xp = monsterXp;
-        defense = monsterDefense;
+        MonsterName = monsterName;
+        Hp = monsterHp; 
+        Attack = monsterAttack;
+        Xp = monsterXp;
+        Defense = monsterDefense;
     }
 
     public bool TakeDamage(int damage)
     {
-        hp -= damage;
-        if (hp < 0)
+        Hp -= damage;
+        if (Hp < 0)
         {
-            hp = 0;
+            Hp = 0; // negative health is 0 health
         }
-        return hp == 0;
+        return Hp == 0;
     }
 
     public void AttackPlayer(Player player)
     {
-        Console.WriteLine($"{monstername} attacks {player.name} for {attack} damage!");
-        player.TakeDamage(attack);
+        Console.WriteLine($"{MonsterName} attacks {player.name} for {Attack} damage!");
+        player.TakeDamage(Attack);
     }
 }
 
