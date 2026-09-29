@@ -26,14 +26,14 @@ class Monster
         return Hp == 0;
     }
 
-    public void AttackPlayer(Player player)
+    public bool AttackPlayer(Player player)
     {
-        Console.WriteLine($"{MonsterName} attacks {player.name} for {Attack} damage!");
-        player.TakeDamage(Attack);
+        Console.WriteLine($"{MonsterName} attacks {player.Name} for {Attack} damage!");
+        return player.TakeDamage(Attack);
     }
 }
 
-//types of monsters
+// types of monsters. arv
 class Goblin : Monster
 {
     public Goblin() : base("Goblin", 20, 5, 10, 3) //name, hp, atk, xp, def
