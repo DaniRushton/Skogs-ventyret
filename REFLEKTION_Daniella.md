@@ -39,3 +39,21 @@
   Exempelvis när jag skapade AttackPlayer() så kallade jag på klassen Player som jag egentligen inte hade just 
   då - så jag  behövde lägga lite mer tid på att göra en egen liten kortfattad Player-stub istället för att 
   kunna fokusera på mitt egna arbete.
+
+---
+
+## Vilken datastruktur valde ni för vapensortimentet och varför?
+
+> 
+
+---
+
+## Hur sorterade ni monstren i arenan?
+
+> 
+
+---
+
+## Hade ni kunnat lösa arenan utan arv?
+
+> 

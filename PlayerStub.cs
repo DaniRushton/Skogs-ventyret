@@ -15,7 +15,7 @@ class Player
         Name = name;
         Hp = 30;
         MaxHp = 30;
-        Attack = 5;
+        Attack = 25;
         Defense = 3;
         Level = 1;
         Xp = 0;
