@@ -29,8 +29,8 @@
                 if (monsterDied)
                 {
                     Console.WriteLine($"{playerName} defeated {monster.MonsterName}");
-                    player.GainXP(monster.Xp); //kolla namn
-                    battleOver = true;
+                    player.GainXp(monster.Xp); 
+                    return true;
                 }
 
 
@@ -40,7 +40,7 @@
                     if (playerDied)
                     {
                         Console.WriteLine($"{playerName} was defeated.");
-                        battleOver = true;
+                        return false;
                     }
                 }
 
@@ -55,7 +55,7 @@
                 if (playerDied)
                 {
                     Console.WriteLine($"{playerName} was defeated.");
-                    battleOver = true;
+                    return false;
                 }
 
             }
@@ -72,7 +72,7 @@
                 {
                     Console.WriteLine($"{playerName} was defeated.");
                 }
-                battleOver = true;
+                return !playerDied;
             }
             else
             {

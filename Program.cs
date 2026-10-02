@@ -1,7 +1,7 @@
 ﻿
 Console.WriteLine("What's your name?");
 string playerName = Console.ReadLine();
-Player player = new Player(playerName);
+Player player = new Player(playerName, 30, 10, 15);
 
 int day = 1;
 bool playing = true;
@@ -37,8 +37,8 @@ while (playing)
         {
             Console.WriteLine("-------- Game Over --------");
             Console.WriteLine($"Days survived: {day}");
-            Console.WriteLine($"Level reached: {player.Level}"); // kolla namn
-            Console.WriteLine($"Total XP:      {player.Xp}");  //kolla namn
+            Console.WriteLine($"Level reached: {player.Level}");
+            Console.WriteLine($"Total XP:      {player.Xp}");
             Console.WriteLine();
             Console.WriteLine("----- Defeated Monsters -----");
             foreach (string defeatedMonster in defeatedMonsters) // Shows defeated monsters
@@ -57,13 +57,39 @@ while (playing)
     else if (playingChoice == "2") // Rest
     {
         Console.WriteLine($"{playerName} rests and restores Hp");
-        player.Heal(); // kolla namn
+        player.Heal();
         day++;
     }
 
-    // TODO: Arena ej implementerad ännu 
     else if (playingChoice == "3") //Arena  
     {
-        Console.WriteLine($"{playerName} walks into the arena"); 
+        if (day < 7) // Player must be level 7 to enter arena
+        {
+            Console.WriteLine("You must survive 7 days to enter the arena");
+        }
+        else
+        {
+            Console.WriteLine($"{playerName} walks into the arena");
+            bool survivedArena = Arena.RunArena(player, playerName, defeatedMonsters);
+
+            if (player.Hp <= 0) // When player dies, shows stats
+            {
+                Console.WriteLine("-------- Game Over --------");
+                Console.WriteLine($"Days survived: {day}");
+                Console.WriteLine($"Level reached: {player.Level}");
+                Console.WriteLine($"Total XP:      {player.Xp}");
+                Console.WriteLine();
+                Console.WriteLine("----- Defeated Monsters -----");
+                foreach (string defeatedMonster in defeatedMonsters) // Shows defeated monsters
+                {
+                    Console.WriteLine(defeatedMonster);
+                }
+                playing = false;
+            }
+            else
+            {
+                day += 7; // Arena takes 7 days to complete
+            }
+        }
     }
 }
