@@ -14,7 +14,7 @@
 |------|-----------|
 | [Daniella] | Zip + RAPPORT.md + REFLEKTION.md |
 | [Lazo] | REFLEKTION.md |
-| [Murtaza] | REFLEKTION.md |
+
 
 ---
 
@@ -34,17 +34,28 @@
 
 > TakeDamage(int damage) minskar hp och ser till att hp:n aldrig går under 0. i det fall att hp:n blir 0 så
   returnar den att objektet är dött och anropar koden som säger att striden är över.
-  AttackPlayer(Player player) låter monstret attackera spelaren och skriver ut vem som attackerar vem och hur
+ 
+> AttackPlayer(Player player) låter monstret attackera spelaren och skriver ut vem som attackerar vem och hur
   mycket skada det blir. Anropar också player.TakeDamage() för att skadan faktiskt skall ske
-  MonsterSpawner.SpawnRandomMonster() använder Random för att slumpa fram ett nytt objekt (monstertyp) varje 
+ 
+> MonsterSpawner.SpawnRandomMonster() använder Random för att slumpa fram ett nytt objekt (monstertyp) varje 
   runda istället för att koden skall återanvända samma potentiellt döda monster runda efter runda. 
+ 
+> BattleSystem.RunBattle() bröts ut till en egen klass så att skog och arena skulle kunna använda samma stridslogik så slipper vi 
+  skriva om koden till båda filerna. Den returnar true ifall spelaren överlever striden och false om spelaren dog - där avslutas 
+  spelet också. 
+ 
+> Arena.RunArena() kör 7 fasta strider i rad mot monster i stigande svårighetsgrad genom att anropa BAttleSystem.RunBattle() för 
+  varje mosnter i listan. Dör spelaren avbryts arenan och funktionen returnar false.
 
 ### Main()
 
-> I Main() så efterfrågas spelaren sitt namn. Därefter körs MonsterSpawner som skapar ett nytt monster vid
-  rundans start. Sedan kommer en while-loop som tillåter spelaren att välja mellan att 1) attackera, 2)
-  försvara eller 3) springa, alla dessa skadar spelare med olika variabler; 1) baserat på monstrets attack-
-  styrka, 2) baseras på hälfen av monstrets styrka, 3) random skada baserat på monstrets styrka.
+> I Main() så efterfrågas spelaren sitt namn. Sedan körs en while-loop som representerar varje enskild dag. Spelaren väljer mellan 
+  att 1) gå ut i skogen, 2) vila eller 3) gå till arenan. Väljer spelaren 1 så slumpas ett nytt monster fram med hjälp av 
+  MonsterSpawner och självaste striden hanterar BattleSystem, där spelaren kan välja mellan att 1) attackera mosntret 2) försvara 
+  sig eller 3) springa. Vilar spelaren sig så återställs spelarens HP, och väljer spelaren arenan så körs 7 strider med mosnter 
+  sorterade i svårighetsgrad. Dör spelaren så avslutas spelet och visar en poängtavla med antal dagar överlevda, level och Xp, samt 
+  en lista över besegrade mosnter.
 
 ### Git
 
@@ -67,11 +78,17 @@
 
 ### Vad vi lade till
 
-> 
+> Vi lade till en Arena funktion där spelaren slåss mot 7 monster i stigande svårighetsgrad. Spelaren kan inte avbryta striden, 
+  och vinner hen ges en stor XP-bonus. Eftersom spelaren inte kan läka sig/vila så krävs det att spelaren överlevt minst 7 dagar innan 
+  besöksmomentet.
+  
 
 ### Varför vi löste det såhär
 
-> 
+> Vi valde att bryta ut stridslogiken til en separat BattleSystem-klass så att vi skulle slippa behöva skriva samma kod två gånger 
+  - en för skogen och en för arenan. Detta gör koden lättare att underhålla då man bara behöver ändra koden på ett ställe i det fall 
+  att det behövs. Arena monstrena sattas i en fast ordning i en List<Monster> eftersom spelar alltid ska möta samma sju monster 
+  i samma sorterade ordning (enklast till svårast).
 
 ---
 
@@ -80,5 +97,17 @@
 Klistra in utskriften från `git log --oneline` här:
 
 ```
-[klistra in här]
+6e3005f (HEAD -> main, origin/main, origin/HEAD) Made an arena, updated reflektion.md
+f4e95d7 Implement Player class with attributes and methods
+1a2eb50 Tagit bort player stub
+dd8057a Flyttade striden till egen fil
+1a2a8a3 Spelloopen och striden klar
+023c2a1 Flyttar filsökväg och tar bort tillfällig Player-stub
+9f7542d Added README, RAPPORT, REFLEKTION. Gjort en spelloop.
+494c24a Added MonsterSpawner & Types
+e221bb5 Ändrade klassnamn
+4a960fc Skapat class Monster
+e15c28d Added class Monster
+a7fb4e8 Adderat gitignore
+
 ```
