@@ -4,6 +4,7 @@
 
     public Shop()
     {
+        // Weapons sortiment sorted by cheapest/least attack bonus to most expensive/most attack bonus
         inventory = new List<Weapon>
         {
             new Dagger(),
@@ -31,20 +32,21 @@
             {
                 shopping = false;
             }
+            // TryParse checks if input is a number before using it as an index. otherwise it's an invalid input.
             else if (int.TryParse(choice, out int index) && index >= 1 && index <= inventory.Count)
             {
-                Weapon chosenWeapon = inventory[index - 1];
+                Weapon chosenWeapon = inventory[index - 1]; // -1 as it's an index starting from 0, but player sees 1-3
 
                 if (player.Gold >= chosenWeapon.Price)
                 {
-                    player.SpendGold(chosenWeapon.Price);
-                    player.EquipWeapon(chosenWeapon);
+                    player.SpendGold(chosenWeapon.Price); 
+                    player.EquipWeapon(chosenWeapon); // Equips chosen weapon to player, replacing previous weapon.
                     Console.WriteLine($"You bought {chosenWeapon.WeaponName}.");
                 }
 
                 else
                 {
-                    Console.WriteLine("You're too poor.");
+                    Console.WriteLine("You're too poor."); 
 
                 }
 
