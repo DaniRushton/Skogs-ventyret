@@ -46,7 +46,11 @@
 
 ## Vilken datastruktur valde ni för vapensortimentet och varför?
 
->  
+>  Jag valde att använda en List<Weapon> för vapensortimentet i shoppen för att det gjorde det enkelt tt visa sortimentet med 
+   numrerade val som speladen kan skriva in för att köpa ett vapen eftersom listan redan har inbyggd indexering. Jag känner att hade 
+   jag använt Dictionary<string, Weapon> för att slå upp vapen genom att skriva namn så skulle det vara lite onödigt komplicerat 
+   eftersom spelaren hade behövt skriva in exakt namn på vapnet. Dessutom passar det mer med en lista eftersom alla andra val i spelet
+   är mellan 1-3, och att ha en random "skriv ditt vapenval" skulle nog se lite konstigt ut i terminalen.
 
 ---
 
