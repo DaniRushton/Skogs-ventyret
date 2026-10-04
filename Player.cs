@@ -9,6 +9,8 @@ public class Player
     private int _level;
     private int _xp;
     private int _daysSurvived;
+    private int _gold = 0;
+    private int _weaponBonus = 0;
 
     public string Name
     {
@@ -50,6 +52,17 @@ public class Player
         get { return _daysSurvived; }
     }
 
+    public int Gold
+    {
+        get { return _gold; }
+    }
+
+    public int WeaponBonus
+    {
+        get { return _weaponBonus; }
+    }
+
+
     public Player(string name, int maxhp, int attack, int defense)
     {
         _name = name;
@@ -60,6 +73,8 @@ public class Player
         _level = 1;
         _xp = 0;
         _daysSurvived = 0;
+        _gold = 0;
+        _weaponBonus = 0;
     }
 
     public bool TakeDamage(int damage)
@@ -95,5 +110,26 @@ public class Player
         _attack += 5;
         _hp = _maxhp;
         _xp = 0;
+    }
+
+    public void GainGold(int amount)
+    {
+        _gold += amount;
+    }
+
+    public void SpendGold(int amount)
+    {
+        if (_gold >= amount)
+        {
+            _gold -= amount;
+        }
+    }
+     
+    public void EquipWeapon(Weapon weapon)
+    {
+        _attack -= _weaponBonus;
+        _weaponBonus = weapon.AttackBonus;
+        _attack += _weaponBonus;
+        Console.WriteLine($"{Name} equipped {weapon.WeaponName}! Attack is now {_attack}.");
     }
 }

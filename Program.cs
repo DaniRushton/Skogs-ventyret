@@ -1,7 +1,7 @@
 ﻿
 Console.WriteLine("What's your name?");
 string playerName = Console.ReadLine();
-Player player = new Player(playerName, 30, 10, 15);
+Player player = new Player(playerName, 30, 20, 15);
 
 int day = 1;
 bool playing = true;
@@ -15,6 +15,7 @@ while (playing)
     Console.WriteLine("1) Go into the forest");
     Console.WriteLine("2) Rest");
     Console.WriteLine("3) Go into the arena");
+    Console.WriteLine("4) Visit the weapons shop");
 
 
     string playingChoice = Console.ReadLine();
@@ -30,7 +31,7 @@ while (playing)
 
         if (playerSurvived)
         {
-            defeatedMonsters.Add(monster.MonsterName);
+            defeatedMonsters.Add(monster.MonsterName); //Adds defeated monster to list
         }
 
         if (player.Hp <= 0) // When player dies, shows stats
@@ -91,5 +92,11 @@ while (playing)
                 day += 7; // Arena takes 7 days to complete
             }
         }
+    }
+    else if (playingChoice == "4") // Weapons shop
+    {
+        
+        Shop shop = new Shop();
+        shop.ShowShop(player);
     }
 }

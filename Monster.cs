@@ -31,12 +31,18 @@ class Monster
         Console.WriteLine($"{MonsterName} attacks {player.Name} for {Attack} damage!");
         return player.TakeDamage(Attack);
     }
+
+    public int GoldDrop()
+    {
+        Random random = new Random();
+        return random.Next(5, 16); // Monster drops random gold amount between 5 and 15
+    }
 }
 
 // types of monsters. arv
 class Goblin : Monster
 {
-    public Goblin() : base("Goblin", 20, 5, 10, 3) //name, hp, atk, xp, def
+    public Goblin() : base("Goblin", 10, 5, 10, 1) //name, hp, atk, xp, def
     {
 
     }
@@ -45,7 +51,7 @@ class Goblin : Monster
 
 class Orc : Monster
 {
-    public Orc() : base("Orc", 40, 10, 30, 10)
+    public Orc() : base("Orc", 20, 10, 30, 5)
     {
 
     }
@@ -53,7 +59,7 @@ class Orc : Monster
 
 class Ogre : Monster
 {
-    public Ogre() : base("Ogre", 60, 25, 45, 20)
+    public Ogre() : base("Ogre", 40, 30, 45, 10)
     {
 
     }

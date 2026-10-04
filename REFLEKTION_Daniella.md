@@ -1,7 +1,7 @@
 ﻿# Reflektion
 
 **Namn:**  Daniella
-**Kurs:**  Cloud Dev
+**Kurs:**  Grundläggande OOP i C#
 **Uppgift:**  Slutprojekt
 **Datum:**  2026-09-28
 
@@ -26,6 +26,8 @@
   fördela delar av projektet jämt mellan oss alla. Men med de medlemmar vi haft, jag och Lazo bestämde vi oss att 
   dela upp klass-hierarkierna mellan oss så vi skulle kunna få en grund att stå på. Tanken var att ge Murtaza i 
   uppgift att skapa spelloopen, men det gick inte då vi inte haft kontakt med honom, så då tog jag över det arbetet.
+  Sedan för att satsa på VG-kraven så delade vi upp arbetet med att jag fick skapa arenan och Lazo fick skapa vapensystemet.
+  Men vapenshopen blev för utmanande för Lazo att hinna med, så då tog jag över det arbetet också. 
 
 ---
 

@@ -29,7 +29,10 @@
                 if (monsterDied)
                 {
                     Console.WriteLine($"{playerName} defeated {monster.MonsterName}");
-                    player.GainXp(monster.Xp); 
+                    player.GainXp(monster.Xp);
+                    int goldDropped = monster.GoldDrop();
+                    player.GainGold(goldDropped);
+                    Console.WriteLine($"{playerName} earned {goldDropped} gold.");
                     return true;
                 }
 
